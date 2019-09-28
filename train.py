@@ -9,7 +9,7 @@ from keras.preprocessing.image import ImageDataGenerator
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # model = ResNet50(weights=None,input_shape=(384, 384 ,3), classes=101)
-model = VGG16(weights=None,input_shape=(64, 64, 3), classes=101)
+model = VGG16(weights=None,input_shape=(128, 128, 3), classes=101)
 
 # Compile classifier
 # model.compile(loss='categorical_crossentropy',optimizer=optimizers.rmsprop(lr=0.0001, decay=1e-6))
