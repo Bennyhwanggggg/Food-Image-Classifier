@@ -25,13 +25,22 @@ base_model = InceptionV3(weights='imagenet', include_top=False, input_tensor=Inp
 # model.compile(loss='categorical_crossentropy',optimizer=optimizers.rmsprop(lr=0.0001, decay=1e-6))
 # model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
 model.compile(loss='categorical_crossentropy',
-              optimizer=optimizers.Adam(lr=0.00008, beta_1=0.9, beta_2=0.97, epsilon=1e-7))
+              optimizer=optimizers.Adam(lr=0.0001, beta_1=0.9, beta_2=0.97, epsilon=1e-7),
+              metrics=['accuracy'])
 
 # Fitting CNN to the images
-train_data_generator = ImageDataGenerator(rescale=1./255,
-                                          shear_range=0.2,
-                                          zoom_range=0.2,
-                                          horizontal_flip=True)
+train_data_generator = ImageDataGenerator(featurewise_center=False,  # set input mean to 0 over the dataset
+                                          samplewise_center=False,  # set each sample mean to 0
+                                          featurewise_std_normalization=False,  # divide inputs by std of the dataset
+                                          samplewise_std_normalization=False,  # divide each input by its std
+                                          zca_whitening=False,  # apply ZCA whitening
+                                          rotation_range=45,  # randomly rotate images in the range (degrees, 0 to 180)
+                                          width_shift_range=0.125,  # randomly shift images horizontally (fraction of total width)
+                                          height_shift_range=0.125,  # randomly shift images vertically (fraction of total height)
+                                          horizontal_flip=True,  # randomly flip images
+                                          vertical_flip=False, # randomly flip images
+                                          rescale=1./255,
+                                          fill_mode='nearest')
 test_data_generator = ImageDataGenerator(rescale=1./255)
 training_set = train_data_generator.flow_from_directory('./food101/train',
                                                         target_size=(128, 128),
