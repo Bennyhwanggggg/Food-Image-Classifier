@@ -1,0 +1,20 @@
+// Pycharm
+**/.idea/**
+
+// Python Virtual Environment
+**/venv
+
+// Dataset
+**/food101
+
+// Jupyter-notebook
+**/.ipynb_checkpoints/
+
+// Mac OS
+**/.DS_Store
+
+// zip files
+*.zip
+
+//temp
+**/models/
