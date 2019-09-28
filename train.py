@@ -52,7 +52,7 @@ test_set = test_data_generator.flow_from_directory('./food101/test',
                                                    class_mode='categorical')
 model.fit_generator(training_set,
                     steps_per_epoch=800/batch_size,
-                    epochs=100,
+                    epochs=150,
                     validation_data=test_set,
                     validation_steps=200/batch_size,
                     shuffle=False)
