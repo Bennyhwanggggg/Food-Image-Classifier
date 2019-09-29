@@ -15,8 +15,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, accuracy_score
 
 # File Format
-f = h5py.File('./food101/food_c101_n1000_r384x384x3.h5', 'r')
-# f = h5py.File('./food101/food_c101_n10099_r64x64x3.h5', 'r')
+f = h5py.File('./data/food_c101_n1000_r384x384x3.h5', 'r')
+# f = h5py.File('./data/food_c101_n10099_r64x64x3.h5', 'r')
 
 # classfiers
 # model = ResNet50(weights=None,input_shape=(64, 64, 3), classes=101)

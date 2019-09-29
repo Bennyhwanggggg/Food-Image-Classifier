@@ -27,7 +27,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 models_filename = './model/v8-vgg16-model-1/v8_vgg16_model_1.h5'
-image_dir = './food101/images'
+image_dir = './data/images'
 image_size = (224, 224)
 batch_size = 16
 epochs = 80

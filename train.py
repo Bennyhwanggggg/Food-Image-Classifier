@@ -42,11 +42,11 @@ train_data_generator = ImageDataGenerator(featurewise_center=False,  # set input
                                           rescale=1./255,
                                           fill_mode='nearest')
 test_data_generator = ImageDataGenerator(rescale=1./255)
-training_set = train_data_generator.flow_from_directory('./food101/train',
+training_set = train_data_generator.flow_from_directory('./data/train',
                                                         target_size=(299, 299),
                                                         batch_size=batch_size,
                                                         class_mode='categorical')
-test_set = test_data_generator.flow_from_directory('./food101/test',
+test_set = test_data_generator.flow_from_directory('./data/test',
                                                    target_size=(299, 299),
                                                    batch_size=batch_size,
                                                    class_mode='categorical')

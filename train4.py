@@ -21,8 +21,8 @@ from sklearn.metrics import f1_score, accuracy_score
 batch_size = 64
 
 # File Format
-# f = h5py.File('./food101/food_c101_n1000_r384x384x3.h5','r')
-f = h5py.File('./food101/food_c101_n10099_r64x64x3.h5', 'r')
+# f = h5py.File('./data/food_c101_n1000_r384x384x3.h5','r')
+f = h5py.File('./data/food_c101_n10099_r64x64x3.h5', 'r')
 
 x = np.array(f["images"])/255.
 y = np.array([[int(i) for i in f["category"][j]] for j in range(len(f["category"]))])
