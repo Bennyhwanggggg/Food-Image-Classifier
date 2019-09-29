@@ -2,7 +2,7 @@ const fs = require('fs');
 const request = require('request');
 
 var formData = {
-    file: fs.createReadStream('testimg2.jpeg'),
+    file: fs.createReadStream('test3.jpeg'),
 };
 
 request.post({url:'http://0.0.0.0:5000/predict', formData: formData}, function optionalCallback(err, httpResponse, body) {

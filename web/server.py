@@ -50,23 +50,17 @@ def predict():
         #     return jsonify(message=UploadFileError.INVALID_FORMAT.value), 400
         # return jsonify(message=UploadFileSuccess.SUCCESS.value), 200
     data = file.read()
-    print(type(data))
     test_image = Image.open(BytesIO(data))
     test_image = test_image.resize((64, 64))
     test_image = image_utils.img_to_array(test_image)
     test_image = np.expand_dims(test_image, axis=0)
 
-    print(test_image)
-    print(test_image.shape)
     with graph.as_default():
         result = model.predict(test_image, batch_size=1, verbose=1)
-    # result = model.predict(test_image)
-    print(result)
     for idx, n in enumerate(result[0]):
         if n == 1:
             print(idx)
     top_preds = result[0].argsort()[-5:][::-1]
-    print(top_preds)
     top_pred_names = [labels[i] for i in top_preds]
     print(top_pred_names)
     return jsonify(message=top_pred_names[0]), 200
