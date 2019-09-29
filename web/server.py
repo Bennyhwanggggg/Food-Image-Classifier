@@ -1,4 +1,7 @@
 import warnings
+import os
+
+PATH = os.path.dirname(os.path.realpath(__file__))
 
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -19,9 +22,12 @@ from werkzeug.utils import secure_filename
 # model_path = '../models/models_29_09_2019_18_32.h5'
 # weights_path = '../models/weights_29_09_2019_18_32.h5'
 model_path = '../models/models_29_09_2019_18_50.h5'
+model_path = os.path.join(PATH, model_path)
 weights_path = '../models/weights_29_09_2019_18_50.h5'
+weights_path = os.path.join(PATH, weights_path)
 
-labels = np.loadtxt('./labels.txt', delimiter='\n', dtype=str)
+labels_file_path = os.path.join(PATH, 'labels.txt')
+labels = np.loadtxt(labels_file_path, delimiter='\n', dtype=str)
 
 model = load_model(model_path)
 model.load_weights(weights_path)
