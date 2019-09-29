@@ -26,6 +26,7 @@ labels = np.loadtxt('./labels.txt', delimiter='\n', dtype=str)
 model = load_model(model_path)
 model.load_weights(weights_path)
 
+
 global graph
 graph = tf.get_default_graph()
 
@@ -68,7 +69,7 @@ def predict():
     print(top_preds)
     top_pred_names = [labels[i] for i in top_preds]
     print(top_pred_names)
-    return jsonify(message='good'), 200
+    return jsonify(message=top_pred_names[0]), 200
 
 
 if __name__ == "__main__":

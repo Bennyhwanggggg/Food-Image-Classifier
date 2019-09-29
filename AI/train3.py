@@ -20,12 +20,20 @@ from sklearn.metrics import f1_score, accuracy_score
 # f = h5py.File('./data/food_c101_n1000_r384x384x3.h5', 'r')
 f = h5py.File(os.path.join(PATH, './data/food_c101_n10099_r64x64x3.h5'), 'r')
 
+print(f.keys())
+
 # classifiers
 # model = ResNet50(weights=None,input_shape=(64, 64, 3), classes=101)
 model = VGG16(weights=None, input_shape=(64, 64, 3), classes=101)
 
 x = np.array(f["images"])/255.
 y = np.array([[int(i) for i in f["category"][j]] for j in range(len(f["category"]))])
+
+print(len(f["category_names"]))
+for cat in f["category"]:
+    print(len(cat))
+    break
+sys.exit()
 
 # classifier compile
 model.compile(loss='categorical_crossentropy',optimizer=optimizers.rmsprop(lr=0.0001, decay=1e-6))
