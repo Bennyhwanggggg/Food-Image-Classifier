@@ -115,3 +115,4 @@ Whoosh==2.7.4
 widgetsnbextension==3.5.1
 wrapt==1.11.2
 zipp==0.6.0
+gunicorn==19.9.0
