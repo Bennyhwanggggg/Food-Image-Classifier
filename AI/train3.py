@@ -6,7 +6,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 import numpy as np
 import pandas as pd
 import h5py
-import helpers
+import AI.helpers as helpers
 from keras.applications.resnet50 import ResNet50
 from keras.applications.resnet50 import preprocess_input
 from keras.applications.vgg16 import VGG16

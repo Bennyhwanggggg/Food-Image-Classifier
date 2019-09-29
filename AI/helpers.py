@@ -1,7 +1,7 @@
 import os
 import datetime
 
-target_dir = './models/'
+target_dir = '../models/'
 
 
 def save_model(model, filename='{}.h5'.format(datetime.datetime.now().strftime("%d_%m_%Y_%H_%M"))):
