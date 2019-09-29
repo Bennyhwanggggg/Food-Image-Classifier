@@ -8,7 +8,7 @@
 **/venv
 
 // Dataset
-**/food101
+**/data
 
 // Jupyter-notebook
 **/.ipynb_checkpoints/
@@ -18,6 +18,3 @@
 
 // zip files
 *.zip
-
-//temp
-**/models/
