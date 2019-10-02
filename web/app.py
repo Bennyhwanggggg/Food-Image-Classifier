@@ -7,6 +7,7 @@ PATH = os.path.dirname(os.path.realpath(__file__))
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 from flask import Flask, request, redirect, url_for, jsonify
+from flask_cors import CORS
 import numpy as np
 from keras.applications.vgg16 import VGG16
 from keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array
@@ -52,6 +53,15 @@ global graph
 graph = tf.get_default_graph()
 
 app = Flask(__name__)
+CORS(app)
+
+@app.after_request
+def after_request(resp):
+    resp.headers["Access-Control-Allow-Origin"] = '*'
+    request_headers = request.headers.get("Access-Control-Request-Headers")
+    resp.headers["Access-Control-Allow-Headers"] = request_headers
+    resp.headers['Access-Control-Allow-Methods'] = "DELETE, GET, POST, HEAD, OPTIONS"
+    return resp
 
 
 @app.route("/predict", methods=["POST"])
