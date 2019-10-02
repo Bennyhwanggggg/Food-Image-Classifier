@@ -1,8 +1,8 @@
 import boto3
 
 FILE_STORAGE = 'foodai'
-aws_access_key_id = 'AKIAUHOEW66FFI2ABONG'
-aws_secret_access_key = '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'
+aws_access_key_id = 'AKIARWFZYJZWJMKZDV4S'
+aws_secret_access_key = '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'
 
 
 class FileManager:
@@ -22,7 +22,7 @@ class FileManager:
                                                   aws_access_key_id=self.key,
                                                   aws_secret_access_key=self.secret_key)
         except Exception as e:
-            print(str(e))
+            print('connect to storage error:', str(e))
 
     def disconnect_file_storage(self):
         """Used to disconnect from S3 buckets.
@@ -59,9 +59,11 @@ class FileManager:
         """
         self.connect_file_storage()
         try:
+            print('downloading file from s3: {}'.format(file_name), end='...')
             self.s3_resource.Bucket(self.file_storage_name).download_file(Key=file_name, Filename=path_to_download_to)
+            print('done!')
         except Exception as e:
-            print(str(e))
+            print('download file error:', str(e))
         self.disconnect_file_storage()
 
     def read_file(self, file_name):

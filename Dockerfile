@@ -11,6 +11,7 @@ RUN pip install --upgrade pip
 WORKDIR src/
 COPY ./* src/
 
+WORKDIR src/
 RUN pip install -r requirements.txt
 
 WORKDIR src/web
