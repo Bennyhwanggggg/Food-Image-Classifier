@@ -1,0 +1,6 @@
+**/AI
+**/models
+**/venv
+**/node_modules
+**/package*.json
+*.zip
