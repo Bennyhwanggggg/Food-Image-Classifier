@@ -106,3 +106,5 @@ wrapt==1.11.2
 zipp==0.6.0
 gunicorn==19.9.0
 Flask==1.1.1
+boto3==1.9.240
+botocore==1.12.240
