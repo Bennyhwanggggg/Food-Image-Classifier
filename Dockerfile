@@ -9,16 +9,18 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --upgrade pip
 
 WORKDIR src/
-COPY ./* src/
+COPY ./* ./
 
-WORKDIR src/
 RUN pip install -r requirements.txt
 
-WORKDIR src/web
+WORKDIR web/
 COPY . web/
+
+WORKDIR web/web/
 
 EXPOSE 9999
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN ls
+COPY web/nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x ./start.sh
 CMD ["./start.sh"]
