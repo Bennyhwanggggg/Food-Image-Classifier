@@ -1,1 +1,1 @@
-web: python web/server.py
+web: python web/app.py
