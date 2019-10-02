@@ -16,7 +16,7 @@ from keras.preprocessing import image as image_utils
 from io import BytesIO
 from PIL import Image
 import tensorflow as tf
-from web.file_manager import FileManager
+from file_manager import FileManager
 from werkzeug.utils import secure_filename
 
 
