@@ -1,8 +1,8 @@
 import boto3
 
-FILE_STORAGE = 'foodai'
-aws_access_key_id = 'AKIARWFZYJZWOVKIV452'
-aws_secret_access_key = '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'
+FILE_STORAGE = 'food-ai'
+aws_access_key_id = 'AKIA3DBIP7YXI75II5OI'
+aws_secret_access_key = '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'
 
 
 class FileManager:
