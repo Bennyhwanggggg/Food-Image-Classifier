@@ -1,8 +1,9 @@
 import boto3
+import os
 
 FILE_STORAGE = 'food-ai'
-aws_access_key_id = 'AKIARWFZYJZWEZFTRRRI'
-aws_secret_access_key = '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'
+aws_access_key_id = os.environ.get("AWSKEY", 'AKIARWFZYJZWEZFTRRRI')
+aws_secret_access_key = os.environ.get("AWSSECRET", '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')
 
 
 class FileManager:
