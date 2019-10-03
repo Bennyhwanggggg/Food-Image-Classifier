@@ -13,7 +13,7 @@ COPY ./* ./
 
 RUN pip install -r requirements_web.txt
 
-EXPOSE 9999
+EXPOSE 5000
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x ./start.sh
