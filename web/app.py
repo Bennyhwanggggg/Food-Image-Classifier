@@ -6,12 +6,10 @@ PATH = os.path.dirname(os.path.realpath(__file__))
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-from flask import Flask, request, redirect, url_for, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
-from keras.applications.vgg16 import VGG16
-from keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array
-from keras.models import Sequential, Model, load_model
+from keras.models import load_model
 from keras.preprocessing import image as image_utils
 from io import BytesIO
 from PIL import Image
@@ -49,6 +47,11 @@ labels = np.loadtxt(labels_file_path, delimiter='\n', dtype=str)
 
 model = load_model(model_path)
 model.load_weights(weights_path)
+
+if os.path.exists(model_path):
+    os.remove(model_path)
+if os.path.exists(weights_path):
+    os.remove(weights_path)
 
 
 global graph
