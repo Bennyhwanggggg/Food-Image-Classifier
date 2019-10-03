@@ -39,8 +39,10 @@ weights_file_name = 'weights.h5'
 model_path = os.path.join(PATH, model_file_name)
 weights_path = os.path.join(PATH, weights_file_name)
 
-file_manager.download_file(model_file_to_download, model_path)
-file_manager.download_file(weights_file_to_download, weights_path)
+if not os.path.exists(model_path):
+    file_manager.download_file(model_file_to_download, model_path)
+if not os.path.exists(weights_path):
+    file_manager.download_file(weights_file_to_download, weights_path)
 
 labels_file_path = os.path.join(PATH, 'labels.txt')
 labels = np.loadtxt(labels_file_path, delimiter='\n', dtype=str)
