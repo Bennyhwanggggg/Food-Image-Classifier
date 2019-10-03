@@ -15,6 +15,9 @@ RUN pip install -r requirements_web.txt
 
 EXPOSE 5000
 
+ENV AWSKEY=$AWSKEY
+ENV AWSSECRET=$AWSSECRET
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x ./start.sh
 CMD ["./start.sh"]
