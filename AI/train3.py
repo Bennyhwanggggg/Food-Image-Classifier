@@ -29,20 +29,15 @@ model = VGG16(weights=None, input_shape=(64, 64, 3), classes=101)
 x = np.array(f["images"])/255.
 y = np.array([[int(i) for i in f["category"][j]] for j in range(len(f["category"]))])
 
-print(len(f["category_names"]))
-for cat in f["category"]:
-    print(len(cat))
-    break
-sys.exit()
 
 # classifier compile
-model.compile(loss='categorical_crossentropy',optimizer=optimizers.rmsprop(lr=0.0001, decay=1e-6))
-# model.compile(loss='categorical_crossentropy',
-#               optimizer=optimizers.Adam(lr=0.0001, beta_1=0.9, beta_2=0.97, epsilon=1e-7),
-#               metrics=["accuracy"])
+# model.compile(loss='categorical_crossentropy',optimizer=optimizers.rmsprop(lr=0.0001, decay=1e-6))
+model.compile(loss='categorical_crossentropy',
+              optimizer=optimizers.Adam(lr=0.0001, beta_1=0.9, beta_2=0.97, epsilon=1e-7),
+              metrics=["accuracy"])
 
 train_x, test_x, train_y, test_y = train_test_split(x, y, test_size=0.2)
-model.fit(train_x[:128], train_y[:128], batch_size=128, epochs=150, shuffle=False)
+model.fit(train_x[:128], train_y[:128], batch_size=3, epochs=150, shuffle=False)
 
 
 helpers.save_model(model=model)

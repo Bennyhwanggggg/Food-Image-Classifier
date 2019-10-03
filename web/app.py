@@ -31,8 +31,8 @@ file_manager = FileManager()
 # weights_path = os.path.join(PATH, weights_path)
 
 # S3
-model_file_to_download = 'models_29_09_2019_18_50.h5'
-weights_file_to_download = 'weights_29_09_2019_18_50.h5'
+model_file_to_download = 'models_03_10_2019_23_45.h5'
+weights_file_to_download = 'weights_03_10_2019_23_45.h5'
 model_file_name = 'models.h5'
 weights_file_name = 'weights.h5'
 model_path = os.path.join(PATH, model_file_name)
