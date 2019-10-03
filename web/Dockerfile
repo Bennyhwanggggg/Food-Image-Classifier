@@ -18,8 +18,8 @@ RUN pip install -r requirements_web.txt
 
 EXPOSE 5000
 
-ENV AWSKEY=$AWS_KEY
-ENV AWSSECRET=$AWS_SECRET
+ENV AWSKEY=${AWS_KEY}
+ENV AWSSECRET=${AWS_SECRET}
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x ./start.sh
