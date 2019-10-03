@@ -20,7 +20,7 @@ class FileManager:
         try:
             if self.s3_resource is None:
                 self.s3_resource = boto3.resource('s3',
-                                                  region_name='ap-southeast-2b',
+                                                  region_name='ap-southeast-2',
                                                   aws_access_key_id=self.key,
                                                   aws_secret_access_key=self.secret_key)
         except Exception as e:
