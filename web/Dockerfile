@@ -1,5 +1,6 @@
 ARG AWS_KEY
 ARG AWS_SECRET
+ARG PORT
 
 FROM python:3.7
 
@@ -20,6 +21,9 @@ EXPOSE 5000
 
 ENV AWSKEY=${AWS_KEY}
 ENV AWSSECRET=${AWS_SECRET}
+ENV PORT=${PORT}
+
+EXPOSE ${PORT}
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x ./start.sh
