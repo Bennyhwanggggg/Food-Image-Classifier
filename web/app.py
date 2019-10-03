@@ -2,7 +2,6 @@ import warnings
 import os
 
 PATH = os.path.dirname(os.path.realpath(__file__))
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
