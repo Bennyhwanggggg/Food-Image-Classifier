@@ -1,3 +1,6 @@
+ARG AWS_KEY
+ARG AWS_SECRET
+
 FROM python:3.7
 
 RUN apt-get update && apt-get install -y \
@@ -15,8 +18,8 @@ RUN pip install -r requirements_web.txt
 
 EXPOSE 5000
 
-ENV AWSKEY=$AWSKEY
-ENV AWSSECRET=$AWSSECRET
+ENV AWSKEY=$AWS_KEY
+ENV AWSSECRET=$AWS_SECRET
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x ./start.sh
