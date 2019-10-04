@@ -7,9 +7,10 @@ var formData = {
 
 herokuurl = "https://food-predictor-ai.herokuapp.com/predict";
 localurl = 'http://0.0.0.0:5000/predict';
-awsurl = "https://ec2-3-106-117-158.ap-southeast-2.compute.amazonaws.com/predict"
+awsurl = "https://ec2-3-106-117-158.ap-southeast-2.compute.amazonaws.com/predict";
+gcloud = "https://foodai-254912.appspot.com/predict"
 
-request.post({url:awsurl, formData: formData}, function optionalCallback(err, httpResponse, body) {
+request.post({url:gcloud, formData: formData}, function optionalCallback(err, httpResponse, body) {
     if (err) {
       return console.error('upload failed:', err);
     }

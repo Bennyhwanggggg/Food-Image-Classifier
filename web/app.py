@@ -19,7 +19,7 @@ from file_manager import FileManager
 from werkzeug.utils import secure_filename
 
 
-keras.backend.set_floatx('float16')
+keras.backend.set_floatx('float32')
 
 # model files setup
 file_manager = FileManager()
@@ -33,8 +33,8 @@ file_manager = FileManager()
 # weights_path = os.path.join(PATH, weights_path)
 
 # S3
-model_file_to_download = 'models_04_10_2019_20_56.h5'
-weights_file_to_download = 'weights_04_10_2019_20_56.h5'
+model_file_to_download = 'models_29_09_2019_18_50.h5'
+weights_file_to_download = 'weights_29_09_2019_18_50.h5'
 model_file_name = 'models.h5'
 weights_file_name = 'weights.h5'
 model_path = os.path.join(PATH, model_file_name)
@@ -51,10 +51,13 @@ labels = np.loadtxt(labels_file_path, delimiter='\n', dtype=str)
 model = load_model(model_path)
 model.load_weights(weights_path)
 
-if os.path.exists(model_path):
-    os.remove(model_path)
-if os.path.exists(weights_path):
-    os.remove(weights_path)
+try:
+    if os.path.exists(model_path):
+        os.remove(model_path)
+    if os.path.exists(weights_path):
+        os.remove(weights_path)
+except Exception as e:
+    print(str(e))
 
 
 global graph
@@ -74,9 +77,11 @@ def after_request(resp):
 
 @app.route("/predict", methods=["POST"])
 def predict():
+    print('predict called')
     if 'file' not in request.files:
         return jsonify(message='error no file'), 400
     file = request.files['file']
+    print(file)
     if not file.filename:
         return jsonify(message='error no file name'), 400
     # if file and allowed_file(file.filename):

@@ -21,7 +21,7 @@ from sklearn.metrics import f1_score, accuracy_score
 # f = h5py.File('./data/food_c101_n1000_r384x384x3.h5', 'r')
 f = h5py.File(os.path.join(PATH, './data/food_c101_n10099_r32x32x3.h5'), 'r')
 
-keras.backend.set_floatx('float16')
+keras.backend.set_floatx('float32')
 
 # classifiers
 # model = ResNet50(weights=None,input_shape=(64, 64, 3), classes=101)

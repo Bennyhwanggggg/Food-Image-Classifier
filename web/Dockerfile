@@ -25,6 +25,9 @@ ENV PORT=${PORT}
 
 EXPOSE ${PORT}
 
+RUN chmod 777 models.h5
+RUN chmod 777 weights.h5
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x ./start.sh
 CMD ["./start.sh"]
