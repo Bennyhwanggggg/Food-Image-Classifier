@@ -9,6 +9,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
+import keras
 from keras.models import load_model
 from keras.preprocessing import image as image_utils
 from io import BytesIO
@@ -17,6 +18,8 @@ import tensorflow as tf
 from file_manager import FileManager
 from werkzeug.utils import secure_filename
 
+
+keras.backend.set_floatx('float16')
 
 # model files setup
 file_manager = FileManager()
@@ -30,8 +33,8 @@ file_manager = FileManager()
 # weights_path = os.path.join(PATH, weights_path)
 
 # S3
-model_file_to_download = 'models_04_10_2019_20_03.h5'
-weights_file_to_download = 'weights_04_10_2019_20_03.h5'
+model_file_to_download = 'models_04_10_2019_20_56.h5'
+weights_file_to_download = 'weights_04_10_2019_20_56.h5'
 model_file_name = 'models.h5'
 weights_file_name = 'weights.h5'
 model_path = os.path.join(PATH, model_file_name)

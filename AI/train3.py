@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import h5py
 import AI.helpers as helpers
+import keras
 from keras.applications.resnet50 import ResNet50
 from keras.applications.resnet50 import preprocess_input
 from keras.applications.vgg16 import VGG16
@@ -18,13 +19,13 @@ from sklearn.metrics import f1_score, accuracy_score
 
 # File Format
 # f = h5py.File('./data/food_c101_n1000_r384x384x3.h5', 'r')
-f = h5py.File(os.path.join(PATH, './data/food_c101_n10099_r64x64x3.h5'), 'r')
+f = h5py.File(os.path.join(PATH, './data/food_c101_n10099_r32x32x3.h5'), 'r')
 
-print(f.keys())
+keras.backend.set_floatx('float16')
 
 # classifiers
 # model = ResNet50(weights=None,input_shape=(64, 64, 3), classes=101)
-model = VGG16(weights=None, input_shape=(64, 64, 3), classes=101)
+model = VGG16(weights=None, input_shape=(32, 32, 3), classes=101)
 
 x = np.array(f["images"])/255.
 y = np.array([[int(i) for i in f["category"][j]] for j in range(len(f["category"]))])
@@ -37,7 +38,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=["accuracy"])
 
 train_x, test_x, train_y, test_y = train_test_split(x, y, test_size=0.2)
-model.fit(train_x[:32], train_y[:32], batch_size=2, epochs=150, shuffle=False)
+model.fit(train_x[:128], train_y[:128], batch_size=3, epochs=150, shuffle=False)
 
 
 helpers.save_model(model=model)
