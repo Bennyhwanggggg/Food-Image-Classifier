@@ -37,7 +37,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=["accuracy"])
 
 train_x, test_x, train_y, test_y = train_test_split(x, y, test_size=0.2)
-model.fit(train_x[:128], train_y[:128], batch_size=3, epochs=150, shuffle=False)
+model.fit(train_x[:32], train_y[:32], batch_size=2, epochs=150, shuffle=False)
 
 
 helpers.save_model(model=model)
