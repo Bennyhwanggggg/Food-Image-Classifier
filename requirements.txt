@@ -98,4 +98,4 @@ Flask==1.1.1
 boto3==1.9.240
 botocore==1.12.240
 uWSGI==2.0.18
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
